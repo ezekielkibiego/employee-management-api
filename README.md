@@ -56,12 +56,14 @@ pip install -r requirements.txt
 
 6. Create a `.env` file in the root directory with your database credentials:
 
+```
+
 DB_USER=YOUR_DATABASE_USERNAME
 DB_PASSWORD=OUR_DATABASE_PASSWORD
 DB_HOST=localhost
 DB_PORT=5432
 DB_NAME=OUR_DATABASE_NAME
-
+```
 
 7. Run the Flask application:
 
