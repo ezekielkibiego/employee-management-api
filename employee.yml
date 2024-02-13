@@ -1,0 +1,113 @@
+swagger: '2.0'
+info:
+  title: Employee Management API
+  version: '1.0'
+paths:
+  /employees:
+    get:
+      summary: Retrieve a list of employees
+      responses:
+        '200':
+          description: A list of employees
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Employee'
+    post:
+      summary: Create a new employee
+      parameters:
+        - in: body
+          name: employee
+          description: The employee to create
+          required: true
+          schema:
+            $ref: '#/definitions/EmployeeInput'
+      responses:
+        '201':
+          description: Employee created successfully
+        '400':
+          description: Invalid input data
+  /employees/{id}:
+    get:
+      summary: Get employee by ID
+      parameters:
+        - name: id
+          in: path
+          description: ID of the employee to retrieve
+          required: true
+          type: integer
+      responses:
+        '200':
+          description: Employee found
+          schema:
+            $ref: '#/definitions/Employee'
+        '404':
+          description: Employee not found
+    put:
+      summary: Update employee by ID
+      parameters:
+        - name: id
+          in: path
+          description: ID of the employee to update
+          required: true
+          type: integer
+        - in: body
+          name: employee
+          description: Updated employee data
+          required: true
+          schema:
+            $ref: '#/definitions/EmployeeInput'
+      responses:
+        '200':
+          description: Employee updated successfully
+        '400':
+          description: Invalid input data
+        '404':
+          description: Employee not found
+    delete:
+      summary: Delete employee by ID
+      parameters:
+        - name: id
+          in: path
+          description: ID of the employee to delete
+          required: true
+          type: integer
+      responses:
+        '200':
+          description: Employee deleted successfully
+        '404':
+          description: Employee not found
+definitions:
+  Employee:
+    type: object
+    properties:
+      id:
+        type: integer
+        description: The employee's ID
+      name:
+        type: string
+        description: The employee's name
+      email:
+        type: string
+        description: The employee's email address
+      phone_number:
+        type: string
+        description: The employee's phone number
+      department:
+        type: string
+        description: The employee's department
+  EmployeeInput:
+    type: object
+    properties:
+      name:
+        type: string
+        description: The employee's name
+      email:
+        type: string
+        description: The employee's email address
+      phone_number:
+        type: string
+        description: The employee's phone number
+      department:
+        type: string
+        description: The employee's department
