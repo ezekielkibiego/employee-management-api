@@ -3,14 +3,14 @@ pipeline {
     
     environment {
         // Define environment variables
-        DOCKER_IMAGE = 'your-docker-image-name'
+        DOCKER_IMAGE = 'flask-app'
     }
     
     stages {
         stage('Checkout') {
             steps {
                 // Checkout the code from Git repository
-                git 'your-git-repo-url'
+                git 'https://github.com/ezekielkibiego/employee-management-api.git'
             }
         }
         
